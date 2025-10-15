@@ -1,0 +1,40 @@
+{
+    "header": {
+        "logo": "Market",
+        "nav1": "Home",
+        "nav2": "About",
+        "nav3": "Gallery",
+        "nav4": "Contact"
+    },
+    "search": {
+        "placeholder": "Search products..."
+    },
+    "catalogTitle": "Catalog",
+    "categories": [
+        "Gifts & Souvenirs",
+        "Beauty & Health",
+        "Household Items",
+        "Home Appliances",
+        "Computer Equipment",
+        "TVs & Video Equipment",
+        "Smartphones & Phones",
+        "Car Accessories",
+        "Auto Parts",
+        "Wrist Watches"
+    ],
+    "footer": {
+        "logo": "MARKET",
+        "nav": {
+            "home": "Home",
+            "catalog": "Catalog",
+            "cart": "Cart",
+            "contact": "Contact"
+        },
+        "newsletter": {
+            "placeholder": "Enter your email",
+            "button": "Subscribe",
+            "text": "Be the first to know about news and promotions!"
+        },
+        "bottomText": "All rights reserved"
+    }
+}

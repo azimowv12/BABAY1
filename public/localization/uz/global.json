@@ -1,0 +1,40 @@
+{
+    "header": {
+        "logo": "Market",
+        "nav1": "Bosh sahifa",
+        "nav2": "Biz haqimizda",
+        "nav3": "Galereya",
+        "nav4": "Aloqa"
+    },
+    "search": {
+        "placeholder": "Mahsulot qidiring..."
+    },
+    "catalogTitle": "Katalog",
+    "categories": [
+        "Sovg'alar va suvenirlar",
+        "Go'zallik va salomatlik",
+        "Uy ro'zg'or buyumlari",
+        "Maishiy texnika",
+        "Kompyuter texnikasi",
+        "Televizorlar va videotexnika",
+        "Smartfonlar va telefonlar",
+        "Avtomobil jihozlari",
+        "Avto jihozlar",
+        "Qo'l soatlari"
+    ],
+    "footer": {
+        "logo": "MARKET",
+        "nav": {
+            "home": "Bosh sahifa",
+            "catalog": "Katalog",
+            "cart": "Savatcha",
+            "contact": "Aloqa"
+        },
+        "newsletter": {
+            "placeholder": "Emailingizni kiriting",
+            "button": "Yuborish",
+            "text": "Yangiliklar va aksiyalar haqida birinchi bo'lib xabardor bo'ling!"
+        },
+        "bottomText": "Barcha huquqlar himoyalangan"
+    }
+}

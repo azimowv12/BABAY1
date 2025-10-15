@@ -1,0 +1,281 @@
+import { useEffect, useState } from "react";
+import { FiMinus, FiPlus, FiTrash2, FiX } from "react-icons/fi";
+
+export default function Korzinka({ cart, setcart }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHumoOpen, setIsHumoOpen] = useState(false);
+
+  // 🔹 Humo forma holati
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardCode, setCardCode] = useState("");
+  const [expMonth, setExpMonth] = useState("");
+  const [expYear, setExpYear] = useState("");
+
+  // 🔹 Joy va stol nomi
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [selectedTable, setSelectedTable] = useState(null);
+
+  // 🔹 LocalStorage dan yuklash
+  useEffect(() => {
+    const saved = localStorage.getItem("cart");
+    if (saved) setcart(JSON.parse(saved));
+
+    const place = localStorage.getItem("selectedPlace");
+    const table = localStorage.getItem("selectedTable");
+    if (place && table) {
+      setSelectedPlace(place);
+      setSelectedTable(table);
+    }
+  }, []);
+
+  // 🔹 LocalStorage ga saqlash
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  // 🔹 Miqdorni o‘zgartirish
+  const handleQuantityChange = (itemId, type) => {
+    setcart((prev) =>
+      prev.map((item) => {
+        if (item.itemId === itemId) {
+          const newQty =
+            type === "plus" ? item.quantity + 1 : Math.max(1, item.quantity - 1);
+          return { ...item, quantity: newQty };
+        }
+        return item;
+      })
+    );
+  };
+
+  // 🔹 Mahsulotni o‘chirish
+  const handleRemove = (itemId) => {
+    setcart((prev) => prev.filter((item) => item.itemId !== itemId));
+  };
+
+  // 🔹 Jami summa
+  const totalPrice = cart.reduce(
+    (acc, item) =>
+      acc + (Number(item.price) || 0) * (Number(item.quantity) || 1),
+    0
+  );
+
+  // 🔹 Karta raqamini formatlash
+  const formatCardNumber = (val) =>
+    val.replace(/\D/g, "").replace(/(.{4})/g, "$1 ").trim();
+
+  // 🔹 Humo to‘lovini tekshirish
+  const handleHumoPay = (e) => {
+    e.preventDefault();
+
+    if (cardNumber.replace(/\s+/g, "").length < 16) {
+      alert("Iltimos, to‘liq karta raqamini kiriting (16 raqam).");
+      return;
+    }
+    if (!/^\d{3,4}$/.test(cardCode)) {
+      alert("Iltimos, to‘g‘ri karta codi (CVV) kiriting.");
+      return;
+    }
+    if (!expMonth || !expYear) {
+      alert("Iltimos, amal qilish muddatini tanlang.");
+      return;
+    }
+
+    alert("✅ To‘lov amalga oshirildi (demo). Rahmat!");
+    setIsModalOpen(false);
+    setCardNumber("");
+    setCardCode("");
+    setExpMonth("");
+    setExpYear("");
+    setIsHumoOpen(false);
+  };
+
+  // 🔹 Agar korzinka bo‘sh bo‘lsa
+  if (cart.length === 0) {
+    return (
+      <div className="text-center mt-10">
+        <h2 className="text-2xl font-bold dark:text-white">Korzinka</h2>
+        <p className="text-gray-500">Korzinka bo‘sh</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-3xl mx-auto p-4">
+      {/* Sarlavha */}
+      <h2 className="text-2xl font-bold mb-2 dark:text-white">🛒 Korzinka</h2>
+
+      {/* Joy va stol */}
+      <div className="text-center mb-6 dark:text-white">
+        {selectedPlace && selectedTable ? (
+          <p className="font-medium text-gray-700 dark:text-gray-300">
+            🪑 Joy: <span className="font-semibold">{selectedPlace}</span> — Stol:{" "}
+            <span className="font-semibold">{selectedTable}</span>
+          </p>
+        ) : (
+          <p className="text-gray-500">Joy va stol tanlanmagan</p>
+        )}
+      </div>
+
+      {/* Mahsulotlar ro‘yxati */}
+      {cart.map((item) => (
+        <div
+          key={item.itemId}
+          className="flex items-center justify-between bg-white dark:bg-gray-800 shadow rounded-xl p-4 mb-3"
+        >
+          <img
+            src={
+              item.thumbnail ||
+              "https://via.placeholder.com/150?text=No+Image"
+            }
+            alt={item.title}
+            className="w-16 h-16 object-contain"
+          />
+
+          <div className="flex-1 px-4">
+            <h3 className="font-semibold text-sm mb-1 dark:text-white">
+              {item.title}
+            </h3>
+
+            {item.size && (
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                O‘lcham:{" "}
+                <span className="font-semibold capitalize">{item.size}</span>
+              </p>
+            )}
+
+            <p className="text-gray-600 dark:text-gray-300 text-sm mt-1">
+              Narx: {(Number(item.price) * Number(item.quantity)).toFixed(2)} so'm
+            </p>
+
+            <div className="flex items-center gap-2 mt-2">
+              <button
+                onClick={() => handleQuantityChange(item.itemId, "minus")}
+                className="border p-1 rounded dark:text-white"
+              >
+                <FiMinus />
+              </button>
+              <span className="dark:text-white">{item.quantity}</span>
+              <button
+                onClick={() => handleQuantityChange(item.itemId, "plus")}
+                className="border p-1 rounded dark:text-white"
+              >
+                <FiPlus />
+              </button>
+            </div>
+          </div>
+
+          <button
+            onClick={() => handleRemove(item.itemId)}
+            className="text-red-500 hover:text-red-600"
+          >
+            <FiTrash2 size={18} />
+          </button>
+        </div>
+      ))}
+
+      {/* Jami summa */}
+      <div className="text-right font-bold text-lg mt-4 dark:text-white">
+        Jami: {totalPrice.toFixed(2)} so'm
+      </div>
+
+      {/* Buyurtma berish tugmasi */}
+      <button
+        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl mt-4 w-full shadow-md transition"
+        onClick={() => setIsModalOpen(true)}
+      >
+        Buyurtma berish
+      </button>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex justify-center">
+          <div
+            className={`bg-white dark:bg-gray-900 w-full md:max-w-lg rounded-b-2xl shadow-lg p-6 fixed top-0 left-1/2 -translate-x-1/2 transition-transform duration-500 ease-out ${isModalOpen ? "translate-y-0" : "-translate-y-full"
+              }`}
+          >
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 dark:text-gray-300"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <FiX size={20} />
+            </button>
+
+            <h2 className="text-xl font-bold mb-4 dark:text-white">
+              Buyurtma berish
+            </h2>
+
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div className="flex items-center justify-between font-semibold dark:text-white">
+                <span>Umumiy summa:</span>
+                <span>{totalPrice.toFixed(2)} so'm</span>
+              </div>
+
+              {/* Humo to‘lov oynasi */}
+              <div className="mt-2">
+                <div
+                  className="flex items-center justify-between p-3 border rounded-lg cursor-pointer"
+                  onClick={() => setIsHumoOpen((prev) => !prev)}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-8 flex items-center justify-center bg-gradient-to-r from-blue-400 to-teal-400 rounded-md">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="w-8 h-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                      >
+                        <path
+                          d="M6 12c0-1.657 1.343-3 3-3h6c1.657 0 3 1.343 3 3s-1.343 3-3 3H9c-1.657 0-3-1.343-3-3z"
+                          fill="white"
+                          opacity="0.95"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium dark:text-white">
+                        Humo
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-300">
+                        Card orqali to‘lov
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-300">
+                    {isHumoOpen ? "Yopish" : "Ochish"}
+                  </div>
+                </div>
+
+                {isHumoOpen && (
+                  <form onSubmit={handleHumoPay} className="mt-3 space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium dark:text-gray-300">
+                        Karta raqami
+                      </label>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        placeholder="8600 0000 0000 0000"
+                        value={cardNumber}
+                        onChange={(e) =>
+                          setCardNumber(formatCardNumber(e.target.value))
+                        }
+                        maxLength={19}
+                        className="w-full border rounded-lg p-2 mt-1 dark:bg-gray-800 dark:text-white"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-green-600 hover:bg-green-700 text-white w-full py-2 rounded-xl transition"
+                    >
+                      To‘lovni amalga oshirish
+                    </button>
+                  </form>
+                )}
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
