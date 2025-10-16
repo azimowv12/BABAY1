@@ -8,16 +8,18 @@ const Footer = () => {
         <div className="flex flex-col gap-2 w-full sm:w-auto text-center sm:text-left">
           <div className="text-xl font-bold text-blue-700">Market</div>
           <a href="tel:+998991994555" className="text-blue-700 hover:underline">
-            +998 99 199 45 55
+            +998 33 309 09 99 (BUXARA)
+            +998 52 525 99 99 (KOGON)
+            +998 99 747 49 99 (KOGON)
           </a>
           <a href="#" className="text-blue-700 hover:underline">
-            Somewhere, Toshkent
+            Somewhere, Buxoro
           </a>
           <a
             href="mailto:market@gmail.com"
             className="text-blue-700 hover:underline"
           >
-            market@gmail.com
+            Babayfood@gmail.com
           </a>
         </div>
 

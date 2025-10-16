@@ -38,32 +38,17 @@ const categories = [
   {
     id: 4,
     key: "Detskiy Menu",
-   img: "https://img-api.yumapos.ru/image/crop/original/d9a64953-9e5e-6bed-4152-45b75cc32f86.png",
+    img: "https://img-api.yumapos.ru/image/crop/original/d9a64953-9e5e-6bed-4152-45b75cc32f86.png",
   },
   {
     id: 5,
-    key: "categories.4",
-    icon: <GiLaptop className="w-10 h-10 md:w-14 md:h-14 text-purple-600" />,
+    key: "PIZZA",
+    img: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
   },
   {
     id: 6,
-    key: "categories.5",
-    icon: <FaTv className="w-10 h-10 md:w-14 md:h-14 text-red-600" />,
-  },
-  {
-    id: 7,
-    key: "categories.6",
-    icon: <GiSmartphone className="w-10 h-10 md:w-14 md:h-14 text-indigo-600" />,
-  },
-  {
-    id: 8,
-    key: "categories.7",
-    icon: <FaCarAlt className="w-10 h-10 md:w-14 md:h-14 text-yellow-600" />,
-  },
-  {
-    id: 9,
-    key: "categories.8",
-    icon: <BsGearFill className="w-10 h-10 md:w-14 md:h-14 text-orange-600" />,
+    key: "Suvlar",
+   img: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png",
   },
 ];
 
@@ -92,6 +77,16 @@ export default function CatalogGrid({ place, table }) {
       navigate("/detskiy", {
         state: { place, table },
       });
+    } else if (id === 5) {
+
+      navigate("/pitsa", {
+        state: { place, table },
+      });
+    } else if (id === 6) {
+
+      navigate("/suvlar", {
+        state: { place, table },
+      });
     } else {
       console.log(`Kategoriya ${id} bosildi`);
     }
@@ -100,8 +95,7 @@ export default function CatalogGrid({ place, table }) {
   return (
     <div className="bg-gray-50 py-8 md:py-12 dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 dark:text-white">
-          {t("catalogTitle")}
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 dark:text-white"> MENU
         </h1>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">

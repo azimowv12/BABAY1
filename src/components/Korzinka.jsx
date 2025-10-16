@@ -210,68 +210,12 @@ export default function Korzinka({ cart, setcart }) {
                 <span>{totalPrice.toFixed(2)} so'm</span>
               </div>
 
-              {/* Humo to‘lov oynasi */}
-              <div className="mt-2">
-                <div
-                  className="flex items-center justify-between p-3 border rounded-lg cursor-pointer"
-                  onClick={() => setIsHumoOpen((prev) => !prev)}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-8 flex items-center justify-center bg-gradient-to-r from-blue-400 to-teal-400 rounded-md">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="w-8 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                      >
-                        <path
-                          d="M6 12c0-1.657 1.343-3 3-3h6c1.657 0 3 1.343 3 3s-1.343 3-3 3H9c-1.657 0-3-1.343-3-3z"
-                          fill="white"
-                          opacity="0.95"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium dark:text-white">
-                        Humo
-                      </div>
-                      <div className="text-xs text-gray-500 dark:text-gray-300">
-                        Card orqali to‘lov
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-300">
-                    {isHumoOpen ? "Yopish" : "Ochish"}
-                  </div>
-                </div>
+              <h3>+998 33 309 09 99 (BUXARA)</h3>
+              <h3>+998 52 525 99 99 (KOGON)</h3>
+              <h3>+998 99 747 49 99 (KOGON)</h3>
 
-                {isHumoOpen && (
-                  <form onSubmit={handleHumoPay} className="mt-3 space-y-3">
-                    <div>
-                      <label className="block text-sm font-medium dark:text-gray-300">
-                        Karta raqami
-                      </label>
-                      <input
-                        type="text"
-                        inputMode="numeric"
-                        placeholder="8600 0000 0000 0000"
-                        value={cardNumber}
-                        onChange={(e) =>
-                          setCardNumber(formatCardNumber(e.target.value))
-                        }
-                        maxLength={19}
-                        className="w-full border rounded-lg p-2 mt-1 dark:bg-gray-800 dark:text-white"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="bg-green-600 hover:bg-green-700 text-white w-full py-2 rounded-xl transition"
-                    >
-                      To‘lovni amalga oshirish
-                    </button>
-                  </form>
-                )}
-              </div>
+              <p className="font-bold">Shu nomerlarga aloqaga chiqsangiz buyurtma qilgan mahsulotingizni aytib olishingiz mumkin!</p>
+
             </form>
           </div>
         </div>

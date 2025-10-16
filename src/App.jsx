@@ -12,6 +12,8 @@ import Burger from "./components/pages/burger/burger";
 import XodDog from "./components/pages/xoddog/xoddog";
 import Xoddog from "./components/pages/xoddog/xoddog";
 import DetskiyMenu from "./components/pages/detskiy/detskiyCombo";
+import PIZZA from "./components/pages/pitsa/pitsa";
+import Suvlar from "./components/pages/suvlar/suvlar";
 
 export default function App() {
   const [wishlist, setWishlist] = useState([]);
@@ -94,6 +96,30 @@ export default function App() {
               path="/detskiy"
               element={
                 <DetskiyMenu
+                  wishlist={wishlist}
+                  setWishlist={setWishlist}
+                  cart={cart}
+                  setCart={setCart}
+                  searchTerm={searchTerm}
+                />
+              }
+            />
+            <Route
+              path="/pitsa"
+              element={
+                <PIZZA
+                  wishlist={wishlist}
+                  setWishlist={setWishlist}
+                  cart={cart}
+                  setCart={setCart}
+                  searchTerm={searchTerm}
+                />
+              }
+            />
+            <Route
+              path="/suvlar"
+              element={
+                <Suvlar
                   wishlist={wishlist}
                   setWishlist={setWishlist}
                   cart={cart}

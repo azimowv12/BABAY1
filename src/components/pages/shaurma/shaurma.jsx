@@ -164,7 +164,7 @@ export default function Shaurma({
                                 key={product.id}
                                 className="bg-white rounded-2xl shadow-md p-4 flex flex-col justify-between hover:shadow-lg transition dark:bg-gray-900 dark:text-white"
                             >
-                                <Link to={`/phones/${product.id}`}>
+                                <Link >
                                     <img
                                         src={thumbnail}
                                         alt={title}

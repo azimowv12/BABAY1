@@ -137,16 +137,15 @@ export default function Burger({
                                 key={product.id}
                                 className="bg-white rounded-2xl shadow-md p-4 flex flex-col justify-between hover:shadow-lg transition dark:bg-gray-900 dark:text-white"
                             >
-                                <Link to={`/burger/${product.id}`}>
+                                <Link>
                                     <img
                                         src={thumbnail}
                                         alt={title}
                                         className="w-full h-48 object-contain mb-3"
                                         loading="lazy"
                                     />
-                                    <h3 className="text-sm font-medium text-gray-800 dark:text-white">
-                                        {title}
-                                    </h3>
+                                    <h3 className="text-sm font-medium text-gray-800 dark:text-white">{title}</h3>
+                                    <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">{product.desc}</p>
                                 </Link>
 
                                 {/* ❤️ Wishlist */}
@@ -173,7 +172,7 @@ export default function Burger({
                         );
                     })
                 ) : (
-                    <p className="text-gray-500">Hech narsa topilmadi.</p>
+                    <p className="text-gray-500">Heч narsa topilmadi.</p>
                 )}
             </div>
 

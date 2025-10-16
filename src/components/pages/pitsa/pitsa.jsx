@@ -2,8 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaShoppingCart, FaStar, FaHeart, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-export default function Xoddog({
+export default function PIZZA({
     wishlist = [],
     setWishlist = () => { },
     cart = [],
@@ -20,103 +19,120 @@ export default function Xoddog({
 
     useEffect(() => {
         setPost([
+            // === NEW PIZZAS ===
             {
                 id: 1,
-                title: "Хаггу",
-                desc: "Булка, соус, мясо говядины, салат, помидоры, сыр, картошка фри.",
-                price: { small: 43000, large: 43000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Цезарь",
+                desc: "Тесто, цезарь соус, куриное филе, айсберг, помидор, пармезан, гренки, сыр.",
+                price: { small: 33000, large: 66000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 2,
-                title: "Донер",
-                desc: "Сочная говядина, соус, мясо говядины, лаваш, овощи, картошка фри.",
-                price: { small: 35000, large: 38000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Тушёнка",
+                desc: "Тесто, соус пронто, шампиньоны, болгарский перец, помидор, тушёнка, укроп, сыр.",
+                price: { small: 44000, large: 88000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 3,
-                title: "Клаб Сэндвич",
-                desc: "Куриное филе, овощи, помидор, сыр, салат, соус, картошка фри.",
-                price: { small: 40000, large: 40000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Курица-Грибы New",
+                desc: "Тесто, цезарь соус, шампиньоны, куриное бедро, помидор, сыр.",
+                price: { small: 32000, large: 63000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 4,
-                title: "Араб Кебаб",
-                desc: "Лаваш, говядина, овощи, соус, картошка фри.",
-                price: { small: 37000, large: 42000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Техас",
+                desc: "Тесто, соус пронто, красный лук, охотничья сосиска, шампиньоны, говяжий фарш, сыр.",
+                price: { small: 40000, large: 72000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 5,
-                title: "Бабай Кебаб",
-                desc: "Тушеная говядина, булка, томат, овощи, соус.",
-                price: { small: 38000, large: 38000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Пепперони",
+                desc: "Соус пронто, пепперони, орегано, сыр моцарелла.",
+                price: { small: 55000, large: 82000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 6,
-                title: "Хот-Дог Чимчи",
-                desc: "Булка, сосиска, корейская морковка (кимчи), кетчуп, майонез.",
-                price: { small: 16000, large: 18000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца по Деревенски",
+                desc: "Соус пронто, колбаса копчёная, помидор, перец болгарский, говяжий фарш, сыр моцарелла, зелень.",
+                price: { small: 55000, large: 85000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 7,
-                title: "Хот-Дог Канада",
-                desc: "Булка, канадская сосиска, кетчуп, майонез, салат айсберг, огурец.",
-                price: { small: 21000, large: 23000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Четыре Сыра",
+                desc: "Соус пронто, сыр чеддер, сыр фета, сыр пармезан, сыр моцарелла, орехи.",
+                price: { small: 58000, large: 90000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 8,
-                title: "Хот-Дог Сырный",
-                desc: "Булка, сосиска, сырный соус, кетчуп, майонез, огурцы.",
-                price: { small: 23000, large: 25000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Охотка",
+                desc: "Соус пронто, охотничья сосиска, куриное филе, лук зелёный.",
+                price: { small: 52000, large: 74000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
+
+            // === BABAY FOOD PIZZAS ===
             {
                 id: 9,
-                title: "Хот-Дог Классик",
-                desc: "Булка, классическая сосиска, кетчуп, майонез, листья салата.",
-                price: { small: 22000, large: 25000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Овощной",
+                desc: "Соус пронто, помидор, грибы, перец болгарский, маслины, огурцы маринованные, зелень.",
+                price: { small: 43000, large: 60000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 10,
-                title: "Хот-Дог с Грибами",
-                desc: "Булка, сосиска, соус, грибы, кетчуп, майонез, сыр.",
-                price: { small: 25000, large: 29000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Домашняя",
+                desc: "Соус пронто, сосиска, помидор, говяжий фарш, сыр моцарелла.",
+                price: { small: 55000, large: 80000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 11,
-                title: "Хот-Дог Чили",
-                desc: "Булка, сосиска, соус техас, айсберг, томаты, соус чили.",
-                price: { small: 28000, large: 28000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Домашняя Mix",
+                desc: "Соус пронто, сосиска, помидор, мясо говяжий, говяжий фарш, сыр моцарелла, зелень.",
+                price: { small: 60000, large: 90000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 12,
-                title: "Лонгер Мантяр",
-                desc: "Булка, грибной соус, айсберг, куриное филе, помидор, перец халапеньо.",
-                price: { small: 33000, large: 33000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Курица с Грибами",
+                desc: "Соус цезарь, куриное филе, помидор, грибы, сыр моцарелла.",
+                price: { small: 53000, large: 72000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 13,
-                title: "Лонгер Чиз",
-                desc: "Булка, сладкий соус, айсберг, помидор, огурцы, сыр брушетта, куриное филе.",
-                price: { small: 34000, large: 34000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Комбо",
+                desc: "Соус пронто, грибы, маслины, помидор, куриное филе, мясо говядины, охотничья сосиска, колбаса говяжья, колбаса куриная, сыр моцарелла.",
+                price: { small: 58000, large: 90000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
             {
                 id: 14,
-                title: "Лонгер Чили",
-                desc: "Булка, куриное филе, соус техас, айсберг, салат микс, сладкий чили.",
-                price: { small: 28000, large: 28000 },
-                thumbnail: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
+                title: "Пицца Мясо с Овощами",
+                desc: "Соус пронто, мясо говяжий, перец болгарский, грибы, маслины, помидор, сыр моцарелла.",
+                price: { small: 58000, large: 84000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
+            },
+            {
+                id: 15,
+                title: "Пицца Мясной",
+                desc: "Соус пронто, помидор, мясо говяжий, сыр моцарелла.",
+                price: { small: 65000, large: 90000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
+            },
+            {
+                id: 16,
+                title: "Пицца Бабай",
+                desc: "Соус пронто, грибы, помидор, ветчина, охотничья сосиска, колбаса говяжий, колбаса куриный, двойной сыр моцарелла.",
+                price: { small: 60000, large: 92000 },
+                thumbnail: "https://i.ytimg.com/vi/nyRj6evjf04/maxresdefault.jpg",
             },
         ]);
         setLoading(false);
@@ -230,8 +246,8 @@ export default function Xoddog({
                                     >
                                         <FaHeart
                                             className={`text-2xl transition ${isWish
-                                                    ? "text-red-500"
-                                                    : "text-gray-400"
+                                                ? "text-red-500"
+                                                : "text-gray-400"
                                                 }`}
                                         />
                                     </button>
@@ -280,8 +296,8 @@ export default function Xoddog({
                                 key={page}
                                 onClick={() => setCurrentPage(page)}
                                 className={`px-4 py-2 rounded-xl border ${page === currentPage
-                                        ? "bg-blue-600 text-white"
-                                        : "bg-gray-200 dark:bg-gray-700 dark:text-white"
+                                    ? "bg-blue-600 text-white"
+                                    : "bg-gray-200 dark:bg-gray-700 dark:text-white"
                                     }`}
                             >
                                 {page}
