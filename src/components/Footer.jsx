@@ -24,21 +24,7 @@ const Footer = () => {
         </div>
 
         {/* Ma'lumot bo‘limi */}
-        <div className="flex flex-col gap-2 w-full sm:w-auto text-center sm:text-left">
-          <strong className="text-lg">Ma'lumot</strong>
-          <a href="#" className="text-blue-700 hover:underline">
-            Biz haqimizda
-          </a>
-          <a href="#" className="text-blue-700 hover:underline">
-            Bo'sh ish o'rinlari
-          </a>
-          <a href="#" className="text-blue-700 hover:underline">
-            Tovarlarni almashtirish va to'lovni qaytarish
-          </a>
-          <a href="#" className="text-blue-700 hover:underline">
-            Yordam
-          </a>
-        </div>
+    
 
         {/* Bonuslar bo‘limi */}
         <div className="flex flex-col gap-2 w-full sm:w-auto text-center sm:text-left">
