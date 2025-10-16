@@ -20,26 +20,25 @@ const categories = [
   {
     id: 1,
     key: "Shaurma",
-    img: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album", 
+    img: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
+
   },
   {
     id: 2,
-    key: "categories.1",
-    icon: (
-      <GiLipstick className="w-10 h-10 md:w-14 md:h-14 text-pink-600 ring-2 ring-pink-400" />
-    ),
+    key: "Burger",
+    img: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+
+
   },
   {
     id: 3,
-    key: "categories.2",
-    icon: <GiKitchenTap className="w-10 h-10 md:w-14 md:h-14 text-green-600" />,
+    key: "HOT-DOG",
+    img: "https://i.pinimg.com/550x/00/ee/8c/00ee8c8f9dcf4d3b1e8587e508b7dc3a.jpg",
   },
   {
     id: 4,
-    key: "categories.3",
-    icon: (
-      <GiWashingMachine className="w-10 h-10 md:w-14 md:h-14 text-gray-600" />
-    ),
+    key: "Detskiy Menu",
+   img: "https://img-api.yumapos.ru/image/crop/original/d9a64953-9e5e-6bed-4152-45b75cc32f86.png",
   },
   {
     id: 5,
@@ -74,8 +73,23 @@ export default function CatalogGrid({ place, table }) {
 
   const handleCategoryClick = (id) => {
     if (id === 1) {
-      
+
       navigate("/shaurma", {
+        state: { place, table },
+      });
+    } else if (id === 2) {
+
+      navigate("/burger", {
+        state: { place, table },
+      });
+    } else if (id === 3) {
+
+      navigate("/xoddog", {
+        state: { place, table },
+      });
+    } else if (id === 4) {
+
+      navigate("/detskiy", {
         state: { place, table },
       });
     } else {

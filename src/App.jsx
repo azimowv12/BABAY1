@@ -8,6 +8,10 @@ import Saved from "./components/Saved";
 import Korzinka from "./components/Korzinka";
 import ZalMenu from "./components/Zal";
 import Shaurma from "./components/pages/shaurma/shaurma";
+import Burger from "./components/pages/burger/burger";
+import XodDog from "./components/pages/xoddog/xoddog";
+import Xoddog from "./components/pages/xoddog/xoddog";
+import DetskiyMenu from "./components/pages/detskiy/detskiyCombo";
 
 export default function App() {
   const [wishlist, setWishlist] = useState([]);
@@ -54,6 +58,42 @@ export default function App() {
               path="/shaurma"
               element={
                 <Shaurma
+                  wishlist={wishlist}
+                  setWishlist={setWishlist}
+                  cart={cart}
+                  setCart={setCart}
+                  searchTerm={searchTerm}
+                />
+              }
+            />
+            <Route
+              path="/burger"
+              element={
+                <Burger
+                  wishlist={wishlist}
+                  setWishlist={setWishlist}
+                  cart={cart}
+                  setCart={setCart}
+                  searchTerm={searchTerm}
+                />
+              }
+            />
+            <Route
+              path="/xoddog"
+              element={
+                <Xoddog
+                  wishlist={wishlist}
+                  setWishlist={setWishlist}
+                  cart={cart}
+                  setCart={setCart}
+                  searchTerm={searchTerm}
+                />
+              }
+            />
+            <Route
+              path="/detskiy"
+              element={
+                <DetskiyMenu
                   wishlist={wishlist}
                   setWishlist={setWishlist}
                   cart={cart}

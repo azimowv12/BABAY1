@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { FaShoppingCart, FaStar, FaHeart, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function Shaurma({
-    wishlist = [],        
+export default function Xoddog({
+    wishlist = [],
     setWishlist = () => { },
     cart = [],
     setCart = () => { },
@@ -19,71 +19,42 @@ export default function Shaurma({
     const perPage = itemsPerRow * rowsPerPage;
 
     useEffect(() => {
-        // Mahsulotlar ro'yxatini to'g'ridan-to'g'ri joylashtirish
         setPost([
             {
                 id: 1,
-                title: "Шаурма Бабай",
-                price: { small: 40000, large: 45000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "тушеная говядина, томатный соус, сыр, зелень"
+                title: "Комбо Лаваш",
+                desc: "Лаваш, говядина, помидоры, огурец, чесночный и томатный соус, картофель фри, кетчуп, стрипсы, сок.",
+                price: 37000,
+                thumbnail: "https://avatars.mds.yandex.net/get-eda/1473782/9bf2a3129bdce9c37e7d32b18016c840/M_height",
             },
             {
                 id: 2,
-                title: "Тандир лаваш (тушеная)",
-                price: { small: 43000, large: 47000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "тушеная говядина, сыр, томатный соус, зелень, яйцо, кунжут"
+                title: "Комбо Бургер",
+                desc: "Булка, котлета, помидоры, маринованные огурцы, соус, картофель фри, кетчуп, стрипсы, сок.",
+                price: 42000,
+                thumbnail: "https://cdn.pixabay.com/photo/2014/04/22/02/56/burger-329523_960_720.jpg",
             },
             {
                 id: 3,
-                title: "Тандир лаваш (куриный)",
-                price: { small: 39000, large: 43000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "куриное филе, помидоры, соус цезар, сыр"
+                title: "Комбо Донер Кюфта",
+                desc: "Булка, кюфта, фирменный соус, помидоры, картофель фри, кетчуп, сок.",
+                price: 40000,
+                thumbnail: "https://avatars.mds.yandex.net/i?id=58a385b1369e1470363007251814b078_l-6003349-images-thumbs&n=13",
             },
             {
                 id: 4,
-                title: "Шаурма по-арабский",
-                price: { small: 33000, large: 36000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "куриное филе, арабский соус, помидоры, огурец, салат"
+                title: "Комбо Хот Дог",
+                desc: "Булка, сосиска, морковка по-корейски, помидоры, свежий огурец, кетчуп, майонез, картофель фри, стрипсы, сок.",
+                price: 38000,
+                thumbnail: "https://avatars.mds.yandex.net/get-eda/3208959/a12ed467a5410ade9b72ff80ef0cc053/1440x1082",
             },
             {
                 id: 5,
-                title: "Московская шаурма",
-                price: { small: 33000, large: 36000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "томатный соус, куриное филе, капуста, морковь"
+                title: "Комбо Пицца",
+                desc: "Тесто, соус, маслины, помидоры, сосиски, сыр моцарелла, картофель фри, кетчуп, стрипсы, сок.",
+                price: 37000,
+                thumbnail: "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg",
             },
-            {
-                id: 6,
-                title: "Классическая шаурма",
-                price: { small: 34000, large: 40000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "томатный соус, мясо говяжий, помидоры, огурцы"
-            },
-            {
-                id: 7,
-                title: "Шаурма от Шефа",
-                price: { small: 38000, large: 43000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "томатный соус, мясо говяжий, сыр, фирменный соус"
-            },
-            {
-                id: 8,
-                title: "Шаурма Биф-Бур",
-                price: { small: 36000, large: 40000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "томатный соус, чесночный соус, мясо говяжий, картофельные чипсы"
-            },
-            {
-                id: 9,
-                title: "Шаурма Цезар",
-                price: { small: 33000, large: 38000 },
-                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
-                desc: "куриное филе, соус цезар, помидоры, листья салата"
-            }
         ]);
         setLoading(false);
     }, []);
