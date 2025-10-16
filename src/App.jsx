@@ -52,7 +52,7 @@ export default function App() {
             {/* 🛒 Savatcha */}
             <Route
               path="/korzinka"
-              element={<Korzinka cart={cart} setcart={setCart} />}
+              element={<Korzinka cart={cart} setCart={setCart} />}
             />
 
             {/* 🌯 Shaurma sahifasi */}

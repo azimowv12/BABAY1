@@ -20,44 +20,44 @@ export default function Suvlar({
     useEffect(() => {
         setDrinks([
             // --- Oddiy ichimliklar ---
-            { id: 1, title: "Кока-Кола", desc: "Газланган ichimlik", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 2, title: "Фанта", desc: "Апельсинli gazli ichimlik", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 3, title: "Сок", desc: "Tabiiy mevali sharbat", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 4, title: "Кофе черный", desc: "Issiq qora kofe", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 5, title: "Кофе 3в1", desc: "Sutli, shakarli aralashma", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 6, title: "Вода газ", desc: "Gazlangan suv", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 7, title: "Вода без газа", desc: "Oddiy toza suv", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 1, title: "Кока-Кола", desc: "Газланган ichimlik", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 2, title: "Фанта", desc: "Апельсинli gazli ichimlik", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 3, title: "Сок", desc: "Tabiiy mevali sharbat", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 4, title: "Кофе черный", desc: "Issiq qora kofe", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 5, title: "Кофе 3в1", desc: "Sutli, shakarli aralashma", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 6, title: "Вода газ", desc: "Gazlangan suv", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 7, title: "Вода без газа", desc: "Oddiy toza suv", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
 
             // --- Коктейли ---
-            { id: 8, title: "Мохито классик", desc: "Limon, yalpiz, soda bilan", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 9, title: "Мохито клубника", desc: "Klubnichali muzli kokteyl", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 10, title: "Мохито апельсин", desc: "Apelsinli yalpizli ichimlik", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 11, title: "Пина Колада", desc: "Ananas va kokosli kokteyl", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 12, title: "Голубая лагуна", desc: "Ko‘k rangli tropik ichimlik", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 13, title: "Сейлд Романс", desc: "Muzli ekzotik kokteyl", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 8, title: "Мохито классик", desc: "Limon, yalpiz, soda bilan", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 9, title: "Мохито клубника", desc: "Klubnichali muzli kokteyl", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 10, title: "Мохито апельсин", desc: "Apelsinli yalpizli ichimlik", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 11, title: "Пина Колада", desc: "Ananas va kokosli kokteyl", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 12, title: "Голубая лагуна", desc: "Ko‘k rangli tropik ichimlik", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 13, title: "Сейлд Романс", desc: "Muzli ekzotik kokteyl", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
 
             // --- Лимонадлар ---
-            { id: 14, title: "Лимонад классический", desc: "Limonli sovuq ichimlik", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 15, title: "Лимонад апельсиновый", desc: "Apelsinli limonad", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 16, title: "Лимонад красная ягода", desc: "Qizil mevalardan limonad", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 17, title: "Лимонад тархун", desc: "Tarkhunli gazlangan ichimlik", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 18, title: "Лимонад вишневый", desc: "Olchali limonad", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 14, title: "Лимонад классический", desc: "Limonli sovuq ichimlik", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 15, title: "Лимонад апельсиновый", desc: "Apelsinli limonad", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 16, title: "Лимонад красная ягода", desc: "Qizil mevalardan limonad", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 17, title: "Лимонад тархун", desc: "Tarkhunli gazlangan ichimlik", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 18, title: "Лимонад вишневый", desc: "Olchali limonad", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
 
             // --- Милкшейклар ---
-            { id: 19, title: "Милкшейк клубничный", desc: "Sovuq klubnichali milkshake", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 20, title: "Милкшейк шоколадный", desc: "Shokoladli milkshake", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 21, title: "Милкшейк банановый", desc: "Banandan tayyorlangan", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 22, title: "Милкшейк малиновый", desc: "Malinali milkshake", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 23, title: "Милкшейк ванильный", desc: "Soddaligi bilan yoqimli", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 19, title: "Милкшейк клубничный", desc: "Sovuq klubnichali milkshake", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 20, title: "Милкшейк шоколадный", desc: "Shokoladli milkshake", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 21, title: "Милкшейк банановый", desc: "Banandan tayyorlangan", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 22, title: "Милкшейк малиновый", desc: "Malinali milkshake", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 23, title: "Милкшейк ванильный", desc: "Soddaligi bilan yoqimli", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
 
             // --- Чайлар ---
-            { id: 24, title: "Чай зелёный", desc: "Tabiiy yashil choy", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 25, title: "Чай чёрный", desc: "Kuchli qora choy", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 26, title: "Чай с лимоном", desc: "Limonli issiq choy", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 27, title: "Чай яблочный", desc: "Olmali choy", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 28, title: "Чай имбирный", desc: "Imbirli, vitaminli choy", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 29, title: "Чай гранатовый", desc: "Anorli choy", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
-            { id: 30, title: "Чай бобай", desc: "Xushbo‘y maxsus choy", price: {}, thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 24, title: "Чай зелёный", desc: "Tabiiy yashil choy", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 25, title: "Чай чёрный", desc: "Kuchli qora choy", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 26, title: "Чай с лимоном", desc: "Limonli issiq choy", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 27, title: "Чай яблочный", desc: "Olmali choy", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 28, title: "Чай имбирный", desc: "Imbirli, vitaminli choy", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 29, title: "Чай гранатовый", desc: "Anorli choy", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
+            { id: 30, title: "Чай бобай", desc: "Xushbo‘y maxsus choy", price:"10000", thumbnail: "https://w7.pngwing.com/pngs/200/675/png-transparent-brand-food-water-refreshing-drink-food-logo-refreshing-drink.png" },
         ]);
         setLoading(false);
     }, []);
@@ -113,7 +113,7 @@ export default function Suvlar({
 
                                 <div className="mt-4 flex justify-between items-center border p-2 rounded-xl">
 
-                                    <span className="text-lg font-semibold">💧 Narx: ...</span>
+                                    <span className="text-lg font-semibold">💧 Narx:{product.price}</span>
                                     <button
                                         onClick={() => addToCart(product)}
                                         className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full"

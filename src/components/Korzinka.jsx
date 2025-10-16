@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FiMinus, FiPlus, FiTrash2, FiX } from "react-icons/fi";
 
-export default function Korzinka({ cart, setcart }) {
+export default function Korzinka({ cart, setCart }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHumoOpen, setIsHumoOpen] = useState(false);
 
@@ -18,7 +18,7 @@ export default function Korzinka({ cart, setcart }) {
   // 🔹 LocalStorage dan yuklash
   useEffect(() => {
     const saved = localStorage.getItem("cart");
-    if (saved) setcart(JSON.parse(saved));
+    if (saved) setCart(JSON.parse(saved)); // ✅ to‘g‘rilandi
 
     const place = localStorage.getItem("selectedPlace");
     const table = localStorage.getItem("selectedTable");
@@ -35,11 +35,13 @@ export default function Korzinka({ cart, setcart }) {
 
   // 🔹 Miqdorni o‘zgartirish
   const handleQuantityChange = (itemId, type) => {
-    setcart((prev) =>
+    setCart((prev) =>
       prev.map((item) => {
         if (item.itemId === itemId) {
           const newQty =
-            type === "plus" ? item.quantity + 1 : Math.max(1, item.quantity - 1);
+            type === "plus"
+              ? item.quantity + 1
+              : Math.max(1, item.quantity - 1);
           return { ...item, quantity: newQty };
         }
         return item;
@@ -49,7 +51,7 @@ export default function Korzinka({ cart, setcart }) {
 
   // 🔹 Mahsulotni o‘chirish
   const handleRemove = (itemId) => {
-    setcart((prev) => prev.filter((item) => item.itemId !== itemId));
+    setCart((prev) => prev.filter((item) => item.itemId !== itemId));
   };
 
   // 🔹 Jami summa
@@ -190,8 +192,9 @@ export default function Korzinka({ cart, setcart }) {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex justify-center">
           <div
-            className={`bg-white dark:bg-gray-900 w-full md:max-w-lg rounded-b-2xl shadow-lg p-6 fixed top-0 left-1/2 -translate-x-1/2 transition-transform duration-500 ease-out ${isModalOpen ? "translate-y-0" : "-translate-y-full"
-              }`}
+            className={`bg-white dark:bg-gray-900 w-full md:max-w-lg rounded-b-2xl shadow-lg p-6 fixed top-0 left-1/2 -translate-x-1/2 transition-transform duration-500 ease-out ${
+              isModalOpen ? "translate-y-0" : "-translate-y-full"
+            }`}
           >
             <button
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 dark:text-gray-300"
@@ -214,8 +217,9 @@ export default function Korzinka({ cart, setcart }) {
               <h3>+998 52 525 99 99 (KOGON)</h3>
               <h3>+998 99 747 49 99 (KOGON)</h3>
 
-              <p className="font-bold">Shu nomerlarga aloqaga chiqsangiz buyurtma qilgan mahsulotingizni aytib olishingiz mumkin!</p>
-
+              <p className="font-bold">
+                Shu nomerlarga aloqaga chiqsangiz buyurtma qilgan mahsulotingizni aytib olishingiz mumkin!
+              </p>
             </form>
           </div>
         </div>
