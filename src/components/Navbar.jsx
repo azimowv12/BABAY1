@@ -35,11 +35,11 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
     setDarkMode(!darkMode);
   };
 
+  // ✅ Endi localStorage tozalanmaydi, faqat bosh sahifaga qaytadi
   const handleResetAll = () => {
-    localStorage.clear();
     setSearch("");
-    toast.success("Maʼlumotlar tozalandi ✅", {
-      duration: 2000,
+    toast.success("Bosh sahifaga qaytildi ✅", {
+      duration: 1500,
       position: "top-center",
       style: {
         background: "#2563eb",
@@ -50,7 +50,7 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
 
     setTimeout(() => {
       window.location.href = "/";
-    }, 1500);
+    }, 1000);
   };
 
   return (
