@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Contact from "./components/contact";
@@ -19,6 +19,27 @@ export default function App() {
   const [wishlist, setWishlist] = useState([]);
   const [cart, setCart] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Load cart from localStorage on app start
+  useEffect(() => {
+    const saved = localStorage.getItem("cart");
+    if (saved) {
+      try {
+        setCart(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse saved cart", e);
+      }
+    }
+  }, []);
+
+  // Persist cart to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } catch (e) {
+      console.error("Failed to save cart", e);
+    }
+  }, [cart]);
 
   return (
     <Router>

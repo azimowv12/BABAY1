@@ -17,15 +17,11 @@ export default function Korzinka({ cart, setCart }) {
 
   // 🔹 LocalStorage dan yuklash
   useEffect(() => {
-    const saved = localStorage.getItem("cart");
-    if (saved) setCart(JSON.parse(saved)); // ✅ to‘g‘rilandi
-
+    // remove loading cart here — App loads cart from localStorage now
     const place = localStorage.getItem("selectedPlace");
     const table = localStorage.getItem("selectedTable");
-    if (place && table) {
-      setSelectedPlace(place);
-      setSelectedTable(table);
-    }
+    if (place) setSelectedPlace(place);
+    if (table) setSelectedTable(table);
   }, []);
 
   // 🔹 LocalStorage ga saqlash
