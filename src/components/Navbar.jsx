@@ -6,7 +6,6 @@ import {
   SunIcon,
   MoonIcon,
 } from "@heroicons/react/24/outline";
-import { FaBars, FaTimes } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { toast, Toaster } from "react-hot-toast";
@@ -18,9 +17,6 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
   const [darkMode, setDarkMode] = useState(
     document.documentElement.classList.contains("dark")
   );
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleLanguageChange = (e) => i18n.changeLanguage(e.target.value);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -39,12 +35,9 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
     setDarkMode(!darkMode);
   };
 
-  // 🔹 BABAY FOOD bosilganda hammasini tozalash
   const handleResetAll = () => {
     localStorage.clear();
     setSearch("");
-    setMenuOpen(false);
-
     toast.success("Maʼlumotlar tozalandi ✅", {
       duration: 2000,
       position: "top-center",
@@ -64,7 +57,7 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
     <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md h-16 flex items-center z-50 transition-colors duration-300">
       <Toaster />
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* 🔹 Logo va nomi */}
+        {/* 🔹 Logo */}
         <div
           className="flex items-center space-x-2 cursor-pointer"
           onClick={handleResetAll}
@@ -75,8 +68,8 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
           </span>
         </div>
 
-        {/* 🔹 Qidiruv */}
-        <div className="flex-1 mx-4">
+        {/* 🔹 Qidiruv — faqat katta ekranlarda ko‘rinsin */}
+        <div className="flex-1 mx-4 hidden md:block">
           <div className="relative w-full">
             <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400 dark:text-gray-300" />
             <input
@@ -89,8 +82,8 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
           </div>
         </div>
 
-        {/* 🔹 Desktop Iconlar */}
-        <div className="hidden md:flex items-center space-x-6">
+        {/* 🔹 Ikonlar */}
+        <div className="flex items-center space-x-6">
           <Link to="/saved" className="relative">
             <HeartIcon className="h-7 w-7 text-gray-600 dark:text-gray-300 cursor-pointer" />
             {wishlistCount > 0 && (
@@ -119,63 +112,8 @@ export default function Navbar({ wishlistCount, cartCount, onSearch }) {
               <MoonIcon className="h-6 w-6 text-gray-800" />
             )}
           </button>
-
-          <select
-            onChange={handleLanguageChange}
-            value={i18n.language}
-            className="border rounded p-1 dark:text-white"
-          >
-            <option value="uz">O'zbekcha</option>
-            <option value="ru">Русский</option>
-            <option value="en">English</option>
-          </select>
-        </div>
-
-        {/* 🔹 Mobile menyu tugmasi */}
-        <div className="md:hidden">
-          {menuOpen ? (
-            <FaTimes
-              className="text-2xl text-gray-800 dark:text-white cursor-pointer"
-              onClick={() => setMenuOpen(false)}
-            />
-          ) : (
-            <FaBars
-              className="text-2xl text-gray-800 dark:text-white cursor-pointer"
-              onClick={() => setMenuOpen(true)}
-            />
-          )}
         </div>
       </div>
-
-      {/* 🔹 Mobile menyu dropdown */}
-      {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-800 shadow-md px-4 py-4 space-y-4">
-          <div className="flex items-center justify-around">
-            <Link to="/saved" onClick={() => setMenuOpen(false)}>
-              <HeartIcon className="h-7 w-7 text-gray-600 dark:text-gray-300" />
-            </Link>
-            <Link to="/korzinka" onClick={() => setMenuOpen(false)}>
-              <ShoppingCartIcon className="h-7 w-7 text-gray-600 dark:text-gray-300" />
-            </Link>
-            <button onClick={toggleDarkMode}>
-              {darkMode ? (
-                <SunIcon className="h-6 w-6 text-yellow-400" />
-              ) : (
-                <MoonIcon className="h-6 w-6 text-gray-800" />
-              )}
-            </button>
-            <select
-              onChange={handleLanguageChange}
-              value={i18n.language}
-              className="border rounded p-1 dark:text-white"
-            >
-              <option value="uz">O'zbekcha</option>
-              <option value="ru">Русский</option>
-              <option value="en">English</option>
-            </select>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
