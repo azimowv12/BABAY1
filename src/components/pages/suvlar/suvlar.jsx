@@ -74,7 +74,12 @@ export default function Suvlar({
         setCart((prev) => {
             const prevSafe = Array.isArray(prev) ? prev : [];
             const exists = prevSafe.find((p) => p.id === product.id);
-            if (exists) return prevSafe;
+            if (exists) {
+                // Agar bor bo'lsa, miqdorini oshiramiz
+                return prevSafe.map((p) =>
+                    p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+                );
+            }
             return [...prevSafe, { ...product, quantity: 1 }];
         });
     };

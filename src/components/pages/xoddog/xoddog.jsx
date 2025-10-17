@@ -141,7 +141,12 @@ export default function Xoddog({
             const smallPrice = product?.price?.small ?? product?.price ?? 0;
             const largePrice = product?.price?.large ?? product?.price ?? 0;
 
-            if (exists) return prevSafe;
+            if (exists) {
+                // Agar bor bo'lsa, miqdorini oshiramiz
+                return prevSafe.map((p) =>
+                    p.itemId === itemId ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+                );
+            }
 
             const item = {
                 ...product,

@@ -71,15 +71,18 @@ export default function Xoddog({
     const addToCart = (product, size) => {
         setCart((prev) => {
             const prevSafe = Array.isArray(prev) ? prev : [];
-            // itemId: productId-size (agar size mavjud bo'lsa)
             const itemId = size ? `${product.id}-${size}` : `${product.id}`;
             const exists = prevSafe.find((p) => p.itemId === itemId);
 
-            // Price handling: API ba'zida { small, large } qaytaradi, ba'zida oddiy number
             const smallPrice = product?.price?.small ?? product?.price ?? 0;
             const largePrice = product?.price?.large ?? product?.price ?? 0;
 
-            if (exists) return prevSafe; // agar takrorlansa qaytarmaydi
+            if (exists) {
+                // Agar bor bo'lsa, miqdorini oshiramiz
+                return prevSafe.map((p) =>
+                    p.itemId === itemId ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+                );
+            }
 
             const item = {
                 ...product,
