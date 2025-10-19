@@ -98,15 +98,16 @@ export default function Burger({
     const addToCart = (product) => {
         setCart((prev) => {
             const prevSafe = Array.isArray(prev) ? prev : [];
-            const exists = prevSafe.find((p) => p.id === product.id);
+            // Use unique itemId for each burger (id only)
+            const itemId = `${product.id}`;
+            const exists = prevSafe.find((p) => p.itemId === itemId);
+            const price = product.price ?? 0;
             if (exists) {
-                // Agar bor bo'lsa, miqdorini oshiramiz
                 return prevSafe.map((p) =>
-                    p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+                    p.itemId === itemId ? { ...p, quantity: (p.quantity || 1) + 1 } : p
                 );
             }
-            // Agar yo'q bo'lsa, yangi qo'shamiz
-            return [...prevSafe, { ...product, quantity: 1 }];
+            return [...prevSafe, { ...product, itemId, price, quantity: 1 }];
         });
     };
 
@@ -153,7 +154,7 @@ export default function Burger({
                                     <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">{product.desc}</p>
                                 </Link>
 
-                                {/* ❤️ Wishlist */}
+                               
                                 <div className="flex justify-end mt-2">
                                     <button onClick={() => toggleWishlist(product)} aria-label="wishlist">
                                         <FaHeart
@@ -162,7 +163,6 @@ export default function Burger({
                                     </button>
                                 </div>
 
-                                {/* 💰 Narx */}
                                 <div className="mt-4 flex justify-between items-center border p-2 rounded-xl">
                                     <span className="text-lg font-semibold">{product.price} so'm</span>
                                     <button

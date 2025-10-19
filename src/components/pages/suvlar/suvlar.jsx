@@ -73,14 +73,16 @@ export default function Suvlar({
     const addToCart = (product) => {
         setCart((prev) => {
             const prevSafe = Array.isArray(prev) ? prev : [];
-            const exists = prevSafe.find((p) => p.id === product.id);
+            // Use unique itemId for each drink (id only)
+            const itemId = `${product.id}`;
+            const exists = prevSafe.find((p) => p.itemId === itemId);
+            const price = product.price ?? 0;
             if (exists) {
-                // Agar bor bo'lsa, miqdorini oshiramiz
                 return prevSafe.map((p) =>
-                    p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+                    p.itemId === itemId ? { ...p, quantity: (p.quantity || 1) + 1 } : p
                 );
             }
-            return [...prevSafe, { ...product, quantity: 1 }];
+            return [...prevSafe, { ...product, itemId, price, quantity: 1 }];
         });
     };
 

@@ -151,32 +151,20 @@ export default function PIZZA({
     const addToCart = (product, size) => {
         setCart((prev) => {
             const prevSafe = Array.isArray(prev) ? prev : [];
-            const itemId = size ? `${product.id}-${size}` : `${product.id}`;
+            // Always require size for pizza (default to 'small' if not provided)
+            const actualSize = size || 'small';
+            const itemId = `${product.id}-${actualSize}`;
             const exists = prevSafe.find((p) => p.itemId === itemId);
-
-            const smallPrice = product?.price?.small ?? product?.price ?? 0;
-            const largePrice = product?.price?.large ?? product?.price ?? 0;
-
+            // Calculate price based on size
+            const smallPrice = product?.price?.small ?? product?.price ?? product.price ?? 0;
+            const largePrice = product?.price?.large ?? product?.price ?? product.price ?? 0;
+            const price = actualSize === 'small' ? smallPrice : largePrice;
             if (exists) {
-                // Agar bor bo'lsa, miqdorini oshiramiz
                 return prevSafe.map((p) =>
                     p.itemId === itemId ? { ...p, quantity: (p.quantity || 1) + 1 } : p
                 );
             }
-
-            const item = {
-                ...product,
-                itemId,
-                size: size || null,
-                price:
-                    size === "small"
-                        ? smallPrice
-                        : size === "large"
-                            ? largePrice
-                            : product?.price ?? 0,
-                quantity: 1,
-            };
-            return [...prevSafe, item];
+            return [...prevSafe, { ...product, itemId, size: actualSize, price, quantity: 1 }];
         });
     };
 
