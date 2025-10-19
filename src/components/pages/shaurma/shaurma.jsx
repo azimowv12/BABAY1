@@ -4,7 +4,7 @@ import { FaShoppingCart, FaStar, FaHeart, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Shaurma({
-    wishlist = [],        
+    wishlist = [],
     setWishlist = () => { },
     cart = [],
     setCart = () => { },
@@ -19,7 +19,6 @@ export default function Shaurma({
     const perPage = itemsPerRow * rowsPerPage;
 
     useEffect(() => {
-        // Mahsulotlar ro'yxatini to'g'ridan-to'g'ri joylashtirish
         setPost([
             {
                 id: 1,
@@ -83,10 +82,18 @@ export default function Shaurma({
                 price: { small: 33000, large: 38000 },
                 thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
                 desc: "куриное филе, соус цезар, помидоры, листья салата"
+            },
+            {
+                id: 10,
+                title: "Тандир лаваш",
+                price: { small: 40000, large: 45000 },
+                thumbnail: "https://sun9-76.userapi.com/impg/UuK0ndtOA608MsGOkjOW-PDawmA4rH-kvLgaJg/9g9ixRr4IGo.jpg?size=604x427&quality=96&sign=9395a75b96fe6d4bdeedd565ebe1e8b5&type=album",
+                desc: "томатный соус, чесночный соус, мясо говяжий, картофельные чипсы, помидоры, кунжут, яйцо"
             }
         ]);
         setLoading(false);
     }, []);
+
 
     // Agar parent setWishlist bilan boshqarilmasa ham ichki fallback ishlaydi
     const toggleWishlist = (product) => {

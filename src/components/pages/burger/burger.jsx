@@ -17,7 +17,6 @@ export default function Burger({
     const itemsPerRow = 3;
     const rowsPerPage = 4;
     const perPage = itemsPerRow * rowsPerPage;
-
     useEffect(() => {
         setPost([
             {
@@ -25,67 +24,89 @@ export default function Burger({
                 title: "Бургер Чикен",
                 price: 34000,
                 thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, куриный котлет, соус ранч, огурец, салат, помидоры, сыр чеддер"
+                desc: "Булка, куриный котлет, соус ранч, огурец, салат, помидоры, сыр чеддер",
             },
             {
                 id: 2,
                 title: "Бургер Чикен Кинг",
                 price: 40000,
                 thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, куриный котлет, соус чесночный, сыр, айсберг, помидоры"
+                desc: "Булка, куриный котлет, соус чесночный, сыр, айсберг, помидоры",
             },
             {
                 id: 3,
-                title: "Шеф Бургер",
+                title: "Бургер Гриль Брой",
                 price: 54000,
-               thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, говяжий котлет, лук, помидоры, фирменный соус, листья салата"
+                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+                desc: "Булка, говяжий котлет на гриле, сыр, айсберг, помидоры, листья салата",
             },
             {
                 id: 4,
-                title: "Бургер New York",
-                price: 40000,
-             thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, сыр чеддер, лук красный, котлет, кетчуп Heinz"
+                title: "Шеф Бургер",
+                price: 54000,
+                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+                desc: "Булка, говяжий котлет, лук, помидоры, фирменный соус, листья салата",
             },
             {
                 id: 5,
-                title: "Гамбургер",
-                price: 34000,
+                title: "Бургер New York",
+                price: 40000,
                 thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, говяжий котлет, лук, сыр, соус, огурец"
+                desc: "Булка, сыр чеддер, лук красный, котлет, кетчуп Heinz",
             },
             {
                 id: 6,
-                title: "Чизбургер",
-                price: 36000,
-               thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, котлет, сыр, кетчуп Heinz, помидоры, огурцы"
+                title: "Бургер Бабай",
+                price: 60000,
+                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+                desc: "Булка, говяжий котлет x2, соус, сыр чеддер, айсберг, картофельные чипсы, фирменный соус",
             },
             {
                 id: 7,
-                title: "Бургер Грибной",
-                price: 32000,
+                title: "Гамбургер",
+                price: 34000,
                 thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, соус айсберг, куриное филе, кетчуп Heinz, сладкий лук"
+                desc: "Булка, говяжий котлет, лук, сыр, соус, огурец",
             },
             {
                 id: 8,
-                title: "Бургер Чикен Чиз",
-                price: 29000,
+                title: "Чизбургер",
+                price: 36000,
                 thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, куриное филе, айсберг, соус пикс, сырный соус, сыр чеддер"
+                desc: "Булка, соус классик, говяжий котлет, маринованные огурцы, кетчуп Heinz, сыр чеддер",
             },
             {
                 id: 9,
+                title: "Бургер Грибной",
+                price: 32000,
+                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+                desc: "Булка, соус айсберг, куриное филе, кетчуп Heinz, сладкий лук",
+            },
+            {
+                id: 10,
+                title: "Бургер Чикен Чиз",
+                price: 29000,
+                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+                desc: "Булка, куриное филе, айсберг, соус пикс, сырный соус, сыр чеддер",
+            },
+            {
+                id: 11,
+                title: "Чизбургер New",
+                price: 32000,
+                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+                desc: "Булка, кетчуп Heinz, сырный соус, говяжий котлет, сыр чеддер",
+            },
+            {
+                id: 12,
                 title: "Бургер Чикен Классик",
                 price: 32000,
-              thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, сладкий соус, айсберг, куриное филе, помидоры, кетчуп Heinz, сыр чеддер"
+                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
+                desc: "Булка, сладкий соус, айсберг, куриное филе, помидоры, маринованные огурцы, кетчуп Heinz, сыр чеддер",
             },
         ]);
         setLoading(false);
     }, []);
+
 
     const toggleWishlist = (product) => {
         setWishlist((prev) => {
@@ -154,7 +175,7 @@ export default function Burger({
                                     <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">{product.desc}</p>
                                 </Link>
 
-                               
+
                                 <div className="flex justify-end mt-2">
                                     <button onClick={() => toggleWishlist(product)} aria-label="wishlist">
                                         <FaHeart
@@ -189,8 +210,8 @@ export default function Burger({
                             key={page}
                             onClick={() => setCurrentPage(page)}
                             className={`px-4 py-2 rounded-xl border ${page === currentPage
-                                    ? "bg-blue-600 text-white"
-                                    : "bg-gray-200 dark:bg-gray-700 dark:text-white"
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-200 dark:bg-gray-700 dark:text-white"
                                 }`}
                         >
                             {page}
