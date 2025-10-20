@@ -46,7 +46,7 @@ export default function ZalMenu() {
   const tables = Array.from({ length: 10 }, (_, i) => ({
     id: i + 1,
     seats: Math.floor(Math.random() * 4) + 2, // 2-6 o'rin
-    status: Math.random() > 0.7 ? "band" : "bo'sh" // 30% ehtimollikda band
+    status: "bo'sh" // always available
   }));
 
   // 🔹 Oldin tanlangan joy va stolni yuklash
