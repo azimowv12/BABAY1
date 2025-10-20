@@ -98,7 +98,7 @@ export default function Korzinka({ cart, setCart }) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
+    <div className="max-w-6xl mx-auto p-4">
       {/* Sarlavha */}
       <h2 className="text-2xl font-bold mb-2 dark:text-white">🛒 Korzinka</h2>
 
@@ -118,7 +118,7 @@ export default function Korzinka({ cart, setCart }) {
       {cart.map((item) => (
         <div
           key={item.itemId}
-          className="flex items-center justify-between bg-white dark:bg-gray-800 shadow rounded-xl p-4 mb-3"
+          className="flex items-center justify-between bg-white dark:bg-gray-800 shadow rounded-2xl p-6 mb-6 text-lg"
         >
           <img
             src={
@@ -126,36 +126,35 @@ export default function Korzinka({ cart, setCart }) {
               "https://via.placeholder.com/150?text=No+Image"
             }
             alt={item.title}
-            className="w-16 h-16 object-contain"
+            className="w-24 h-24 object-contain rounded-xl border border-gray-200 dark:border-gray-700"
           />
 
-          <div className="flex-1 px-4">
-            <h3 className="font-semibold text-sm mb-1 dark:text-white">
+          <div className="flex-1 px-8">
+            <h3 className="font-bold text-xl mb-2 dark:text-white">
               {item.title}
             </h3>
 
             {item.size && (
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                O‘lcham:{" "}
-                <span className="font-semibold capitalize">{item.size}</span>
+              <p className="text-base text-gray-500 dark:text-gray-400 mb-1">
+                O‘lcham: <span className="font-semibold capitalize">{item.size}</span>
               </p>
             )}
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm mt-1">
+            <p className="text-gray-700 dark:text-gray-300 text-lg mt-1 font-semibold">
               Narx: {(Number(item.price) * Number(item.quantity)).toFixed(2)} so'm
             </p>
 
-            <div className="flex items-center gap-2 mt-2">
+            <div className="flex items-center gap-4 mt-4">
               <button
                 onClick={() => handleQuantityChange(item.itemId, "minus")}
-                className="border p-1 rounded dark:text-white"
+                className="border-2 p-2 rounded-lg text-xl dark:text-white"
               >
                 <FiMinus />
               </button>
-              <span className="dark:text-white">{item.quantity}</span>
+              <span className="dark:text-white text-xl font-bold">{item.quantity}</span>
               <button
                 onClick={() => handleQuantityChange(item.itemId, "plus")}
-                className="border p-1 rounded dark:text-white"
+                className="border-2 p-2 rounded-lg text-xl dark:text-white"
               >
                 <FiPlus />
               </button>
@@ -164,9 +163,9 @@ export default function Korzinka({ cart, setCart }) {
 
           <button
             onClick={() => handleRemove(item.itemId)}
-            className="text-red-500 hover:text-red-600"
+            className="text-red-500 hover:text-red-600 text-2xl ml-4"
           >
-            <FiTrash2 size={18} />
+            <FiTrash2 size={28} />
           </button>
         </div>
       ))}
