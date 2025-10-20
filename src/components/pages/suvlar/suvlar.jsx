@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHeart, FaPlus } from "react-icons/fa";
+import { FaHeart, FaPlus, FaMinus, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Suvlar({
@@ -12,6 +12,8 @@ export default function Suvlar({
     const [drinks, setDrinks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
+    const [activeProductId, setActiveProductId] = useState(null);
+    const [quantity, setQuantity] = useState(1);
 
     const itemsPerRow = 3;
     const rowsPerPage = 4;
@@ -86,6 +88,9 @@ export default function Suvlar({
         });
     };
 
+    const increaseQuantity = () => setQuantity((q) => q + 1);
+    const decreaseQuantity = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
+
     const q = (searchTerm || "").toLowerCase().trim();
     const filtered = drinks.filter((p) => (p.title || "").toLowerCase().includes(q));
 
@@ -98,42 +103,84 @@ export default function Suvlar({
 
     return (
         <section className="bg-gray-50 py-8 px-4 dark:bg-gray-900 dark:text-white">
-            <h2 className="text-2xl font-bold mb-6">Ichimliklar</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {currentDrinks.map((product) => {
+                    const isWish = wishlist.includes(product.id);
+                    const isActive = activeProductId === product.id;
+                    const price = product.price ?? 0;
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {currentDrinks.length > 0 ? (
-                    currentDrinks.map((product) => {
-                        const isWish = wishlist.includes(product.id);
-                        return (
-                            <div key={product.id} className="bg-white rounded-2xl shadow-md p-4 flex flex-col justify-between hover:shadow-lg transition dark:bg-gray-900 dark:text-white">
-                                <Link >
-                                    <img src={product.thumbnail} alt={product.title} className="w-full h-48 object-cover mb-3 rounded-xl" />
-                                    <h3 className="text-sm font-medium">{product.title}</h3>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{product.desc}</p>
-                                </Link>
+                    return (
+                        <div
+                            key={product.id}
+                            className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex flex-col hover:shadow-md transition dark:bg-gray-800 dark:border-gray-700"
+                        >
+                            <img
+                                src={product.thumbnail}
+                                alt={product.title}
+                                className="w-full h-48 object-cover rounded-lg mb-3"
+                            />
+                            <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+                            <p className="text-sm text-gray-600 mb-4">{product.desc}</p>
 
-                                <div className="flex justify-end mt-2">
-                                    <button onClick={() => toggleWishlist(product)}>
-                                        <FaHeart className={`text-2xl transition ${isWish ? "text-red-500" : "text-gray-400"}`} />
-                                    </button>
+                            <div className="flex justify-between items-center mb-3">
+                                <div className="flex items-center text-yellow-500">
+                                    <FaStar className="mr-1" />
+                                    <span>4.8 (432)</span>
                                 </div>
-
-                                <div className="mt-4 flex justify-between items-center border p-2 rounded-xl">
-
-                                    <span className="text-lg font-semibold">💧 Narx:{product.price}</span>
-                                    <button
-                                        onClick={() => addToCart(product)}
-                                        className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full"
-                                    >
-                                        <FaPlus />
-                                    </button>
+                                <div className="text-right">
+                                    <span className="text-xl font-bold block">
+                                        {price.toLocaleString()} so‘m
+                                    </span>
                                 </div>
                             </div>
-                        );
-                    })
-                ) : (
-                    <p className="text-gray-500">Hech narsa topilmadi.</p>
-                )}
+
+                            <button
+                                onClick={() => toggleWishlist(product)}
+                                className="p-2 rounded-full hover:bg-gray-100 transition"
+                            >
+                                <FaHeart className={`text-xl ${isWish ? "text-red-500" : "text-gray-400"}`} />
+                            </button>
+
+                            {isActive ? (
+                                <div className="mt-4 border rounded-md p-2">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <button
+                                                onClick={decreaseQuantity}
+                                                className="px-3 py-2 text-lg font-bold hover:bg-gray-100 rounded-md"
+                                            >
+                                                <FaMinus />
+                                            </button>
+                                            <span className="text-lg font-semibold">{quantity}</span>
+                                            <button
+                                                onClick={increaseQuantity}
+                                                className="px-3 py-2 text-lg font-bold hover:bg-gray-100 rounded-md"
+                                            >
+                                                <FaPlus />
+                                            </button>
+                                        </div>
+                                        <button
+                                            onClick={() => addToCart(product)}
+                                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+                                        >
+                                            Qo‘shish
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={() => {
+                                        setActiveProductId(product.id);
+                                        setQuantity(1);
+                                    }}
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium mt-3"
+                                >
+                                    Hoziroq xarid qilish
+                                </button>
+                            )}
+                        </div>
+                    );
+                })}
             </div>
 
             {totalPages > 1 && (
@@ -142,7 +189,10 @@ export default function Suvlar({
                         <button
                             key={page}
                             onClick={() => setCurrentPage(page)}
-                            className={`px-4 py-2 rounded-xl border ${page === currentPage ? "bg-blue-600 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
+                            className={`px-4 py-2 rounded-xl border ${page === currentPage
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-200 dark:bg-gray-700 dark:text-white"
+                                }`}
                         >
                             {page}
                         </button>

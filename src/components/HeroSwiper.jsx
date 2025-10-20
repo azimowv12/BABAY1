@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import PIZZA from "../assets/pizza.jpg";
-import BURGER from "../assets/burger.jpg";
+import BURGER from "../assets/burger.webp";
 
 export default function HeroSwiper() {
   const images = [PIZZA, BURGER ];
@@ -23,8 +23,8 @@ export default function HeroSwiper() {
           modules={[Autoplay, Pagination]}
           className="mySwiper bg-white dark:bg-gray-900 rounded-2xl"
           style={{
-            height: "300px", // Balandlikni aniq belgilash
-            overflow: "hidden" // Scrollni oldini olish
+            height: "400px",
+            overflow: "hidden" 
           }}
         >
           {images.map((src, index) => (
@@ -38,7 +38,8 @@ export default function HeroSwiper() {
                   display: "block",
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover"
+                  objectFit: "cover",
+                  
                 }}
               />
             </SwiperSlide>
@@ -51,7 +52,7 @@ export default function HeroSwiper() {
         <img
           src={PIZZA}
           alt="mobile-banner"
-          className="w-full h-[140px] object-cover rounded-xl bg-white dark:bg-gray-900"
+          className="w-full h-[190px] object-cover rounded-xl bg-white dark:bg-gray-900"
         />
       </div>
     </div>

@@ -1,224 +1,126 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaShoppingCart, FaStar, FaHeart, FaPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaStar, FaHeart, FaPlus, FaMinus } from "react-icons/fa";
 
 export default function Burger({
     wishlist = [],
     setWishlist = () => { },
     cart = [],
     setCart = () => { },
-    searchTerm = ""
+    searchTerm = "",
 }) {
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [activeProductId, setActiveProductId] = useState(null);
+    const [quantity, setQuantity] = useState(1);
 
-    const itemsPerRow = 3;
-    const rowsPerPage = 4;
-    const perPage = itemsPerRow * rowsPerPage;
-    useEffect(() => {
-        setPost([
-            {
-                id: 1,
-                title: "Бургер Чикен",
-                price: 34000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, куриный котлет, соус ранч, огурец, салат, помидоры, сыр чеддер",
-            },
-            {
-                id: 2,
-                title: "Бургер Чикен Кинг",
-                price: 40000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, куриный котлет, соус чесночный, сыр, айсберг, помидоры",
-            },
-            {
-                id: 3,
-                title: "Бургер Гриль Брой",
-                price: 54000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, говяжий котлет на гриле, сыр, айсберг, помидоры, листья салата",
-            },
-            {
-                id: 4,
-                title: "Шеф Бургер",
-                price: 54000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, говяжий котлет, лук, помидоры, фирменный соус, листья салата",
-            },
-            {
-                id: 5,
-                title: "Бургер New York",
-                price: 40000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, сыр чеддер, лук красный, котлет, кетчуп Heinz",
-            },
-            {
-                id: 6,
-                title: "Бургер Бабай",
-                price: 60000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, говяжий котлет x2, соус, сыр чеддер, айсберг, картофельные чипсы, фирменный соус",
-            },
-            {
-                id: 7,
-                title: "Гамбургер",
-                price: 34000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, говяжий котлет, лук, сыр, соус, огурец",
-            },
-            {
-                id: 8,
-                title: "Чизбургер",
-                price: 36000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, соус классик, говяжий котлет, маринованные огурцы, кетчуп Heinz, сыр чеддер",
-            },
-            {
-                id: 9,
-                title: "Бургер Грибной",
-                price: 32000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, соус айсберг, куриное филе, кетчуп Heinz, сладкий лук",
-            },
-            {
-                id: 10,
-                title: "Бургер Чикен Чиз",
-                price: 29000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, куриное филе, айсберг, соус пикс, сырный соус, сыр чеддер",
-            },
-            {
-                id: 11,
-                title: "Чизбургер New",
-                price: 32000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, кетчуп Heinz, сырный соус, говяжий котлет, сыр чеддер",
-            },
-            {
-                id: 12,
-                title: "Бургер Чикен Классик",
-                price: 32000,
-                thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg",
-                desc: "Булка, сладкий соус, айсберг, куриное филе, помидоры, маринованные огурцы, кетчуп Heinz, сыр чеддер",
-            },
-        ]);
-        setLoading(false);
-    }, []);
-
+    useEffect(() => { setPost([{ id: 1, title: "Бургер Чикен", price: 34000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, куриный котлет, соус ранч, огурец, салат, помидоры, сыр чеддер", }, { id: 2, title: "Бургер Чикен Кинг", price: 40000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, куриный котлет, соус чесночный, сыр, айсберг, помидоры", }, { id: 3, title: "Бургер Гриль Брой", price: 54000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, говяжий котлет на гриле, сыр, айсберг, помидоры, листья салата", }, { id: 4, title: "Шеф Бургер", price: 54000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, говяжий котлет, лук, помидоры, фирменный соус, листья салата", }, { id: 5, title: "Бургер New York", price: 40000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, сыр чеддер, лук красный, котлет, кетчуп Heinz", }, { id: 6, title: "Бургер Бабай", price: 60000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, говяжий котлет x2, соус, сыр чеддер, айсберг, картофельные чипсы, фирменный соус", }, { id: 7, title: "Гамбургер", price: 34000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, говяжий котлет, лук, сыр, соус, огурец", }, { id: 8, title: "Чизбургер", price: 36000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, соус классик, говяжий котлет, маринованные огурцы, кетчуп Heinz, сыр чеддер", }, { id: 9, title: "Бургер Грибной", price: 32000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, соус айсберг, куриное филе, кетчуп Heinz, сладкий лук", }, { id: 10, title: "Бургер Чикен Чиз", price: 29000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, куриное филе, айсберг, соус пикс, сырный соус, сыр чеддер", }, { id: 11, title: "Чизбургер New", price: 32000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, кетчуп Heinz, сырный соус, говяжий котлет, сыр чеддер", }, { id: 12, title: "Бургер Чикен Классик", price: 32000, thumbnail: "https://i.pinimg.com/736x/ed/fa/d9/edfad98b139a2741ee52747916955dc1.jpg", desc: "Булка, сладкий соус, айсберг, куриное филе, помидоры, маринованные огурцы, кетчуп Heinz, сыр чеддер", },]); 
+    setLoading(false); }, []);
 
     const toggleWishlist = (product) => {
         setWishlist((prev) => {
-            const prevSafe = Array.isArray(prev) ? prev : [];
-            const exists = prevSafe.includes(product.id);
-            return exists ? prevSafe.filter((w) => w !== product.id) : [...prevSafe, product.id];
+            const exists = prev.includes(product.id);
+            return exists ? prev.filter((id) => id !== product.id) : [...prev, product.id];
         });
     };
 
     const addToCart = (product) => {
         setCart((prev) => {
-            const prevSafe = Array.isArray(prev) ? prev : [];
-            // Use unique itemId for each burger (id only)
-            const itemId = `${product.id}`;
-            const exists = prevSafe.find((p) => p.itemId === itemId);
-            const price = product.price ?? 0;
+            const exists = prev.find((p) => p.id === product.id);
             if (exists) {
-                return prevSafe.map((p) =>
-                    p.itemId === itemId ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+                return prev.map((p) =>
+                    p.id === product.id ? { ...p, quantity: (p.quantity || 1) + quantity } : p
                 );
+            } else {
+                return [...prev, { ...product, quantity }];
             }
-            return [...prevSafe, { ...product, itemId, price, quantity: 1 }];
         });
+        setActiveProductId(null);
+        setQuantity(1);
     };
 
-    const q = (searchTerm || "").toLowerCase().trim();
-    const filteredProducts = post.filter((p) =>
-        (p.title || "").toLowerCase().includes(q)
-    );
-
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [q, post.length]);
-
-    const indexOfLast = currentPage * perPage;
-    const indexOfFirst = indexOfLast - perPage;
-    const currentProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
-    const totalPages = Math.max(1, Math.ceil(filteredProducts.length / perPage));
+    const increaseQuantity = () => setQuantity((q) => q + 1);
+    const decreaseQuantity = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
     if (loading) return <p className="text-center py-6">⏳ Yuklanmoqda...</p>;
 
     return (
         <section className="bg-gray-50 py-8 px-4 dark:bg-gray-900 dark:text-white">
-            <h2 className="text-2xl font-bold mb-6">Burgerlar</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {post.map((product) => {
+                    const isWish = wishlist.includes(product.id);
+                    const isActive = activeProductId === product.id;
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {currentProducts.length > 0 ? (
-                    currentProducts.map((product) => {
-                        const thumbnail = product?.thumbnail || "https://via.placeholder.com/300x200?text=No+Image";
-                        const title = product?.title || "No title";
-                        const isWish = Array.isArray(wishlist) ? wishlist.includes(product.id) : false;
+                    return (
+                        <div
+                            key={product.id}
+                            className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex flex-col hover:shadow-md transition dark:bg-gray-800 dark:border-gray-700"
+                        >
+                            <img
+                                src={product.thumbnail}
+                                alt={product.title}
+                                className="w-full h-48 object-cover rounded-lg mb-3"
+                            />
+                            <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+                            <p className="text-sm text-gray-600 mb-4">{product.desc}</p>
 
-                        return (
-                            <div
-                                key={product.id}
-                                className="bg-white rounded-2xl shadow-md p-4 flex flex-col justify-between hover:shadow-lg transition dark:bg-gray-900 dark:text-white"
-                            >
-                                <Link>
-                                    <img
-                                        src={thumbnail}
-                                        alt={title}
-                                        className="w-full h-48 object-contain mb-3"
-                                        loading="lazy"
-                                    />
-                                    <h3 className="text-sm font-medium text-gray-800 dark:text-white">{title}</h3>
-                                    <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">{product.desc}</p>
-                                </Link>
-
-
-                                <div className="flex justify-end mt-2">
-                                    <button onClick={() => toggleWishlist(product)} aria-label="wishlist">
-                                        <FaHeart
-                                            className={`text-2xl transition ${isWish ? "text-red-500" : "text-gray-400"}`}
-                                        />
-                                    </button>
+                            <div className="flex justify-between items-center mb-3">
+                                <div className="flex items-center text-yellow-500">
+                                    <FaStar className="mr-1" />
+                                    <span>4.7 (293)</span>
                                 </div>
+                                <span className="text-xl font-bold">
+                                    {product.price.toLocaleString()} so'm
+                                </span>
+                            </div>
 
-                                <div className="mt-4 flex justify-between items-center border p-2 rounded-xl">
-                                    <span className="text-lg font-semibold">{product.price} so'm</span>
+                            {/* Wishlist */}
+                            <button
+                                onClick={() => toggleWishlist(product)}
+                                className="p-2 rounded-full hover:bg-gray-100 transition"
+                            >
+                                <FaHeart
+                                    className={`text-xl ${isWish ? "text-red-500" : "text-gray-400"}`}
+                                />
+                            </button>
+
+                            {/* Add to cart or quantity selector */}
+                            {isActive ? (
+                                <div className="flex items-center justify-between mt-4 border rounded-md">
                                     <button
-                                        onClick={() => addToCart(product)}
-                                        className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full"
-                                        aria-label="add"
+                                        onClick={decreaseQuantity}
+                                        className="px-4 py-2 text-lg font-bold hover:bg-gray-100"
+                                    >
+                                        <FaMinus />
+                                    </button>
+                                    <span className="text-lg font-semibold">{quantity}</span>
+                                    <button
+                                        onClick={increaseQuantity}
+                                        className="px-4 py-2 text-lg font-bold hover:bg-gray-100"
                                     >
                                         <FaPlus />
                                     </button>
+                                    <button
+                                        onClick={() => addToCart(product)}
+                                        className="ml-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+                                    >
+                                        Qo‘shish
+                                    </button>
                                 </div>
-                            </div>
-                        );
-                    })
-                ) : (
-                    <p className="text-gray-500">Heч narsa topilmadi.</p>
-                )}
+                            ) : (
+                                <button
+                                    onClick={() => {
+                                        setActiveProductId(product.id);
+                                        setQuantity(1);
+                                    }}
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium mt-3"
+                                >
+                                    Hoziroq xarid qilish
+                                </button>
+                            )}
+                        </div>
+                    );
+                })}
             </div>
-
-            {/* 🔢 Pagination */}
-            {totalPages > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={`px-4 py-2 rounded-xl border ${page === currentPage
-                                ? "bg-blue-600 text-white"
-                                : "bg-gray-200 dark:bg-gray-700 dark:text-white"
-                                }`}
-                        >
-                            {page}
-                        </button>
-                    ))}
-                </div>
-            )}
         </section>
     );
 }
