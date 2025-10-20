@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHeart, FaPlus, FaMinus, FaStar } from "react-icons/fa";
+import { FaHeart, FaPlus, FaMinus, FaStar, FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Suvlar({
@@ -103,6 +103,16 @@ export default function Suvlar({
 
     return (
         <section className="bg-gray-50 py-8 px-4 dark:bg-gray-900 dark:text-white">
+            <div className="flex items-center justify-between mb-6">
+                <button
+                    onClick={() => window.history.back()}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-700 transition shadow-md"
+                >
+                    <FaArrowLeft />
+                    Orqaga
+                </button>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Ichimliklar</h2>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {currentDrinks.map((product) => {
                     const isWish = wishlist.includes(product.id);

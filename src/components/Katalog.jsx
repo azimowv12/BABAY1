@@ -93,7 +93,9 @@ export default function CatalogGrid({ place, table }) {
   };
 
   return (
+    
     <div className="bg-gray-50 py-8 md:py-12 dark:bg-gray-900">
+      
       <div className="container mx-auto px-4 md:px-8">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 dark:text-white"> MENU
         </h1>

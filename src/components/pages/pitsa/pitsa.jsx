@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaShoppingCart, FaStar, FaHeart, FaPlus, FaMinus } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaShoppingCart, FaStar, FaHeart, FaPlus, FaMinus, FaArrowLeft } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function PIZZA({
     wishlist = [],
@@ -19,6 +19,8 @@ export default function PIZZA({
     const itemsPerRow = 3;
     const rowsPerPage = 4;
     const perPage = itemsPerRow * rowsPerPage;
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         setPost([
@@ -188,6 +190,16 @@ export default function PIZZA({
 
     return (
         <section className="bg-gray-50 py-8 px-4 dark:bg-gray-900 dark:text-white">
+            <div className="flex items-center justify-between mb-6">
+                <button
+                    onClick={() => navigate(-1)}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-700 transition shadow-md"
+                >
+                    <FaArrowLeft />
+                    Orqaga
+                </button>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Pitsa</h2>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {currentProducts.map((product) => {
                     const isWish = wishlist.includes(product.id);
